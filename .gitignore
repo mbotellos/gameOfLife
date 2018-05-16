@@ -1,0 +1,10 @@
+*.log
+.DS_Store
+.git
+.idea
+.idea/
+.sass-cache/
+.settings
+.tmp
+dist/
+node_modules
