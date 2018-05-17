@@ -26,8 +26,6 @@
 * Loading all modules
 * Doing all of the above for `*.spec.js` files as well
 
-`Gulp` is the orchestrator:
-
 * Starting and calling Webpack
 * Starting a development server (yes, Webpack can do this too)
 * Generating boilerplate for the Angular app
@@ -68,7 +66,7 @@ Tools needed to run this app:
 
 ## Installing
 
-* `clone` this repo: []
+* `clone` this repo: [https://github.com/mbotellos/gameOfLife]
 
 * Use `yarn` to install dependencies
 
