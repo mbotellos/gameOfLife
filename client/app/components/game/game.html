@@ -10,7 +10,9 @@
     </tr>
   </table>
   <section class="panel">
-    Generation: {{$ctrl.currentGeneration}}
+    Generation: {{$ctrl.currentGeneration}} <br/>
+    <button ng-click="$ctrl.start()">Start</button>
+    <button ng-click="$ctrl.stop()">Stop</button> <br/>
     {{$ctrl.isRunning ? 'Running...' : 'Stopped'}}
   </section>
 </section>

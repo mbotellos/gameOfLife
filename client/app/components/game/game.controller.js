@@ -51,6 +51,8 @@ class GameController {
   stop() {
     if (this.stopInterval) {
       this.services.$interval.cancel(this.stopInterval);
+      this.isRunning = false;
+      this.stopInterval = null;
     }
   }
 
