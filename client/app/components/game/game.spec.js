@@ -43,7 +43,7 @@ describe('Game', () => {
         expect(controller.currentGeneration).toBe(0);
       });
 
-      it('_run method is executed if isRunning flag is true', () => {
+      it('_run method is not executed if isRunning flag is true', () => {
         controller.isRunning = true;
 
         controller.start();
