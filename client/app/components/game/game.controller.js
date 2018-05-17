@@ -23,9 +23,9 @@ class GameController {
   start() {
     // Reset Generations
     this.currentGeneration = 0;
-    this.grid = this.services.game.initializeGrid();
-
     if (!this.isRunning) {
+      this.grid = this.services.game.initializeGrid();
+
       this.isRunning = true;
       this._run();
     }
