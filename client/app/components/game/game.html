@@ -9,4 +9,8 @@
         ng-class="{'grid-cell--live': col.active === 1}"></td>
     </tr>
   </table>
+  <section class="panel">
+    Generation: {{$ctrl.currentGeneration}}
+    {{$ctrl.isRunning ? 'Running...' : 'Stopped'}}
+  </section>
 </section>
