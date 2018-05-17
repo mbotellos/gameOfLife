@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
 import gameComponent from './game.component';
+import gameService from './game.service';
 
 const gameModule = angular.module('game', [
   uiRouter,
@@ -19,6 +20,7 @@ const gameModule = angular.module('game', [
   })
 
   .component('game', gameComponent)
+  .service('gameService', gameService)
   .name;
 
 export default gameModule;
