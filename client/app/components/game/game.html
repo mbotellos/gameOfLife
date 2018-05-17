@@ -1,0 +1,12 @@
+<section class="gameOfLife">
+  <h1 class="title">Game Of Life</h1>
+
+  <table class="grid">
+    <tr ng-repeat="row in $ctrl.grid">
+      <td
+        ng-repeat="col in row"
+        class="grid-cell"
+        ng-class="{'grid-cell--live': col.active === 1}"></td>
+    </tr>
+  </table>
+</section>

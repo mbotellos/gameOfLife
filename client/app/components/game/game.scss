@@ -1,0 +1,20 @@
+.gameOfLife {
+    .grid {
+        margin: auto;
+        background-color: white;
+
+        &, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        &-cell {
+            width: 10px;
+            height: 10px;
+
+            &--live {
+                background-color: black;
+            }
+        }
+    }
+}

@@ -1,8 +1,8 @@
 import angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
-import homeComponent from './home.component';
+import gameComponent from './game.component';
 
-const homeModule = angular.module('home', [
+const gameModule = angular.module('game', [
   uiRouter,
 ])
 
@@ -12,14 +12,13 @@ const homeModule = angular.module('home', [
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('home', {
+      .state('game', {
         url: '/',
-        component: 'home',
+        component: 'game',
       });
   })
 
-  .component('home', homeComponent)
-
+  .component('game', gameComponent)
   .name;
 
-export default homeModule;
+export default gameModule;

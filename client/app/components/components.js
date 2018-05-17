@@ -1,10 +1,8 @@
 import angular from 'angular';
-import Home from './home/home';
+import Game from './game/game';
 
 const componentModule = angular.module('app.components', [
-  Home,
-])
-
-  .name;
+  Game,
+]).name;
 
 export default componentModule;
