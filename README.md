@@ -1,87 +1,96 @@
-# Project Title
+# Table of Contents
 
-One Paragraph of project description goes here
+* [Walkthrough](#walkthrough)
+  * [Build System](#build-system)
+  * [File Structure](#file-structure)
+* [Getting Started](#getting-started)
+  * [Dependencies](#dependencies)
+  * [Installing](#installing)
+  * [Running the App](#running-the-app)
+  * [Testing](#testing)
+    * [Unit testing](#unit-testing)
+      * [Running Unit testing](#running-unit-testing)
 
-## Getting Started
+# Walkthrough
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Build System
 
-### Prerequisites
+`Webpack` handles all file-related concerns:
 
-What things you need to install the software and how to install them
+* Transpiling from ES6 to ES5 with `Babel`
+* Loading HTML files as modules
+* Transpiling stylesheets and appending them to the DOM
+* Refreshing the browser and rebuilding on file changes
+* Hot module replacement for transpiled stylesheets
+* Bundling the app
+* Loading all modules
+* Doing all of the above for `*.spec.js` files as well
 
-```
-Give examples
-```
+`Gulp` is the orchestrator:
 
-### Installing
+* Starting and calling Webpack
+* Starting a development server (yes, Webpack can do this too)
+* Generating boilerplate for the Angular app
 
-A step by step series of examples that tell you have to get a development env running
+## File Structure
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+We use a componentized approach with NG6. This will be the eventual standard (and particularly helpful, if using
+Angular's new router) as well as a great way to ensure a tasteful transition to Angular 2, when the time is ripe.
+Everything--or mostly everything, as we'll explore (below)--is a component. A component is a self-contained
+concern--may it be a feature or strictly-defined, ever-present element of the UI (such as a header, sidebar, or
+footer). Also characteristic of a component is that it harnesses its own stylesheets, templates, controllers, routes,
+services, and specs. This encapsulation allows us the comfort of isolation and structural locality. Here's how it
+looks:
 
 ```
-Give an example
+client
+⋅⋅app/
+⋅⋅⋅⋅app.js * app entry file
+⋅⋅⋅⋅app.html * app template
+⋅⋅⋅⋅common/ * functionality pertinent to several components propagate into this directory
+⋅⋅⋅⋅components/ * where components live
+⋅⋅⋅⋅⋅⋅components.js * components entry file
+⋅⋅⋅⋅⋅⋅game/ * game component
+⋅⋅⋅⋅⋅⋅⋅⋅game.js * game entry file (routes, configurations, and declarations occur here)
+⋅⋅⋅⋅⋅⋅⋅⋅game.component.js * game "directive"
+⋅⋅⋅⋅⋅⋅⋅⋅game.controller.js * game controller
+⋅⋅⋅⋅⋅⋅⋅⋅game.scss * game styles
+⋅⋅⋅⋅⋅⋅⋅⋅game.html * game template
+⋅⋅⋅⋅⋅⋅⋅⋅game.spec.js * game specs (for entry, component, and controller)
 ```
+# Getting Started
 
-## Deployment
+## Dependencies
 
-Add additional notes about how to deploy this on a live system
+Tools needed to run this app:
 
-## Built With
+* `node`, `npm` and `yarn` (nodejs v6 and newer.)
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## Installing
 
-## Contributing
+* `clone` this repo: []
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* Use `yarn` to install dependencies
 
-## Versioning
+## Running the App
+After you have installed all dependencies, you may run the app. Running `npm run start` will bundle the app with `webpack`, launch a development server, and watch all files. The port will be displayed in the terminal.
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+## Testing
 
-## Authors
+### Unit testing
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+The app uses [Karma](http://karma-runner.github.io/0.12/index.html) to run the unit tests, which you can find near the test target (`*.spec.js` files).
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+All tests are also written in ES6. We use Webpack to take care of the logistics of getting those files to run in the various browsers, just like with our client files. This is our testing stack:
 
-## License
+* Karma
+* Webpack + Babel
+* Jasmine
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+To run tests, type `npm test` in the terminal. Read more about testing [below](#testing).
 
-## Acknowledgments
+#### Running Unit testing
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+To run the tests, run `npm test`.
+
+`Karma` combined with Webpack runs all files matching `*.spec.js` inside the `app` folder. This allows us to keep test files local to the component--which keeps us in good faith with continuing to build our app modularly. The file `spec.bundle.js` is the bundle file for **all** our spec files that Karma will run.
